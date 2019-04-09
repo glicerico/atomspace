@@ -188,13 +188,16 @@ ContentHash Link::compute_hash() const
 
 static void check_type(const ValuePtr& value, const Type& type, const std::string& location)
 {
+    if (nameserver().isA(value->get_type(), VARIABLE_NODE))
+        return;
+
     if (!nameserver().isA(value->get_type(), type))
     {
         throw SyntaxException(TRACE_INFO,
                 "%s or subclass is expected as %s, actual parameter type is %s",
-                nameserver().getTypeName(type),
-                location,
-                nameserver().getTypeName(value->get_type()));
+                nameserver().getTypeName(type).c_str(),
+                location.c_str(),
+                nameserver().getTypeName(value->get_type()).c_str());
     }
 }
 

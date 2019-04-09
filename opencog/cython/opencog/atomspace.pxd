@@ -168,6 +168,8 @@ cdef extern from "opencog/atomspace/AtomSpace.h" namespace "opencog":
         cAtomSpace()
         cAtomSpace(cAtomSpace * parent)
 
+        cHandle add_atom(cHandle handle) except +
+
         cHandle add_node(Type t, string s) except +
         cHandle add_node(Type t, string s, tv_ptr tvn) except +
 
@@ -199,7 +201,7 @@ cdef class AtomSpace:
     cdef object parent_atomspace
 
 
-cdef create_python_value_from_c_value(cValuePtr& value, AtomSpace atomspace)
+cdef create_python_value_from_c_value(const cValuePtr& value, AtomSpace atomspace)
 
 # FloatValue
 cdef extern from "opencog/atoms/value/FloatValue.h" namespace "opencog":
