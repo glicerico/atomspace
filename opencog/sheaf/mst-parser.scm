@@ -63,7 +63,7 @@
 			(if (and (not (null? left-atom)) (not (null? right-atom)))
 				(LLOBJ 'get-pair left-atom right-atom)
 				'()))
-		(define multiplier (list-ref DIST-MULTS (- (min distance (length DIST-MULT)) 1)))
+		(define multiplier (list-ref DIST-MULTS (- (min distance (length DIST-MULTS)) 1)))
 
 		(if (null? wpr) bad-mi (* multiplier (LLOBJ METHOD wpr)))
 	)
